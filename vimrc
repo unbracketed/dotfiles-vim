@@ -16,9 +16,9 @@ set expandtab     " convert tab to white space
 set backspace=indent,eol,start
                   " allow backspacing over everything in insert mode
 
-colorscheme vividchalk
+colorscheme adaryn
 "also liked:
-" relaxedgreen, neverness, impact, dante, adarvn, tir black, vividchalk, wuye
+" relaxedgreen, neverness, impact, dante, adaryn, vividchalk, wuye
 "
 
 "don't like dealing with swp files
