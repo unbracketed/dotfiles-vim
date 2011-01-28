@@ -16,7 +16,7 @@ set expandtab     " convert tab to white space
 set backspace=indent,eol,start
                   " allow backspacing over everything in insert mode
 
-colorscheme adaryn
+colorscheme desert
 "also liked:
 " relaxedgreen, neverness, impact, dante, adaryn, vividchalk, wuye
 "
@@ -64,6 +64,10 @@ autocmd BufRead,BufNewFile *.py syntax on
 autocmd BufRead,BufNewFile *.py set ai
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,with,try,except,finally,def,class
 
+autocmd FileType python compiler pylint
+
+
+"enable handy tricks for MiniBufExpl
 "enable handy tricks for MiniBufExpl
 let g:miniBufExplMapWindowNavVim = 1 
 let g:miniBufExplMapWindowNavArrows = 1 
