@@ -94,3 +94,5 @@ nmap <leader>ga :Gwrite<cr>
 nmap <leader>gl :Glog<cr>
 nmap <leader>gd :Gdiff<cr>
 
+"Ack
+let g:ackprg="ack-grep -H --nocolor --nogroup --column"
