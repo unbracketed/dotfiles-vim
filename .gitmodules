@@ -13,3 +13,6 @@
 [submodule "bundle/ConqueTerm"]
 	path = bundle/ConqueTerm
 	url = https://github.com/rygwdn/vim-conque.git
+[submodule "bundle/SuperTab"]
+	path = bundle/SuperTab
+	url = https://github.com/ervandew/supertab.git
