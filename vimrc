@@ -15,8 +15,14 @@ set tabstop=4     " a tab is four spaces
 set expandtab     " convert tab to white space
 set backspace=indent,eol,start
                   " allow backspacing over everything in insert mode
-
-colorscheme desert
+" Work-around incomplete terminfo databases                                     
+" " Particulalry useful when under `screen`, which may or may not be attached
+" to  
+" " a physical terminal capable of 256color mode.                                 
+"if match($TERMCAP, 'Co#256:') == 0 || match($TERMCAP, ':Co#256:') > 0           
+     set t_Co=256                                                                
+"endif
+colorscheme mustang
 "also liked:
 " relaxedgreen, neverness, impact, dante, adaryn, vividchalk, wuye
 "
