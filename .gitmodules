@@ -10,3 +10,6 @@
 [submodule "bundle/ZoomWin"]
 	path = bundle/ZoomWin
 	url = https://github.com/vim-scripts/ZoomWin.git
+[submodule "bundle/ConqueTerm"]
+	path = bundle/ConqueTerm
+	url = https://github.com/rygwdn/vim-conque.git
