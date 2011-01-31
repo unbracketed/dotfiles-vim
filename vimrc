@@ -68,6 +68,22 @@ set equalalways " Multiple windows, when created, are equal in size
 set splitbelow 
 
 
+"Insert New Line *************************************************************
+map <S-Enter> O<ESC> " awesome, inserts new line without going into insert mode
+map <Enter> o<ESC>
+"set fo-=r " do not insert a comment leader after an enter, (no work, fix!!)
+
+
+" Sessions ********************************************************************
+" Sets what is saved when you save a session
+set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
+
+
+" Invisible characters *********************************************************
+set listchars=trail:.,tab:>-,eol:$
+set nolist
+:noremap <Leader>i :set list!<CR> " Toggle invisible chars
+
 " Switch on syntax highlighting.
 syntax on
 
@@ -118,6 +134,14 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 "  " NERDTree
 "  ********************************************************************
 :noremap <Leader>n :NERDTreeToggle<CR>
+
+" NERD Commenter **************************************************************
+let NERDCreateDefaultMappings=0 " I turn this off to make it simple
+
+" Toggle commenting on 1 line or all selected lines. Wether to comment or not
+" is decided based on the first line; if it's not commented then all lines
+" will be commented
+:map <Leader>c :call NERDComment(0, "toggle")<CR> 
 
 " fugitive.vim
 " ------------------------------
