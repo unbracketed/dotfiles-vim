@@ -62,19 +62,52 @@ set showmode
 :noremap <Leader>v :vsp^M^W^W<cr>
 :noremap <Leader>h :split^M^W^W<cr>
 
-"
-" " Switch on syntax highlighting.
+" Windows
+" *********************************************************************
+set equalalways " Multiple windows, when created, are equal in size
+set splitbelow 
+
+
+" Switch on syntax highlighting.
 syntax on
 
 autocmd BufRead,BufNewFile *.py syntax on
 autocmd BufRead,BufNewFile *.py set ai
 autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,with,try,except,finally,def,class
 
+" Python stuff
+" ****************************************************************
+"
+" activate virtualenv in vim python
+if($VIRTUAL_ENV)
+    :python activate_this = '$VIRTUAL_ENV/bin/activate_this.py'
+    :python execfile(activate_this, dict(__file__=activate_this))
+endif
+
+"load any vim customizations for the virtualenv
 if filereadable($VIRTUAL_ENV . '/.vimrc')
     source $VIRTUAL_ENV/.vimrc
 end
+
 autocmd FileType python compiler pylint
 
+
+" Omni Completion *************************************************************
+"let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+set completeopt+=longest
+" close scratch preview automatically
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif 
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+autocmd FileType html :set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+"autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType c set omnifunc=ccomplete#Complete
+" May require ruby compiled in
+"autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete 
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
@@ -97,3 +130,23 @@ nmap <leader>gd :Gdiff<cr>
 
 "Ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+
+"-----------------------------------------------------------------------------  
+"                                Startup
+"
+"
+"----------------------------------------------------------------------------  
+" Open NERDTree on start
+autocmd VimEnter * exe 'NERDTree' | wincmd l 
+
+
+
+
+"----------------------------------------------------------------------------  
+"                                Host specific
+"
+"
+"----------------------------------------------------------------------------  
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
