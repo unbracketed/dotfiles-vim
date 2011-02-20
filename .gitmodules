@@ -28,3 +28,6 @@
 [submodule "bundle/bufexplorer"]
 	path = bundle/bufexplorer
 	url = https://github.com/vim-scripts/bufexplorer.zip.git
+[submodule "bundle/sparkup"]
+	path = bundle/sparkup
+	url = https://github.com/kogakure/vim-sparkup.git
