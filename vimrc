@@ -67,6 +67,11 @@ set showmode
 set equalalways " Multiple windows, when created, are equal in size
 set splitbelow 
 
+"easier switching between windows
+map <C-J> <C-W>j
+map <C-H> <C-W>h
+map <C-L> <C-W>l
+map <C-K> <C-W>k
 
 "Insert New Line *************************************************************
 map <S-Enter> O<ESC> " awesome, inserts new line without going into insert mode
