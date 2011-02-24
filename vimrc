@@ -161,7 +161,7 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 "
 "----------------------------------------------------------------------------  
 " Open NERDTree on start
-autocmd VimEnter * exe 'NERDTree' | wincmd l 
+"autocmd VimEnter * exe 'NERDTree' | wincmd l 
 
 
 
