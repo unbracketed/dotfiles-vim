@@ -22,10 +22,8 @@ set backspace=indent,eol,start
 "if match($TERMCAP, 'Co#256:') == 0 || match($TERMCAP, ':Co#256:') > 0           
      set t_Co=256                                                                
 "endif
-colorscheme mustang
-"also liked:
-" relaxedgreen, neverness, impact, dante, adaryn, vividchalk, wuye
-"
+colorscheme lucius
+
 set wildmenu                  " Menu completion in command mode on <Tab>
 set wildmode=full             " <Tab> cycles between all matching choices.
 
@@ -110,65 +108,65 @@ syntax on
 " ****************************************************************
 "
 autocmd BufRead,BufNewFile *.py syntax on
-autocmd BufRead,BufNewFile *.py set ai
-autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,with,try,except,finally,def,class
+"autocmd BufRead,BufNewFile *.py set ai
+"autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,with,try,except,finally,def,class
 
 " activate virtualenv in vim python
-if($VIRTUAL_ENV)
-    :python activate_this = '$VIRTUAL_ENV/bin/activate_this.py'
-    :python execfile(activate_this, dict(__file__=activate_this))
-endif
+"if($VIRTUAL_ENV)
+    ":python activate_this = '$VIRTUAL_ENV/bin/activate_this.py'
+    ":python execfile(activate_this, dict(__file__=activate_this))
+"endif
 
 "load any vim customizations for the virtualenv
-if filereadable($VIRTUAL_ENV . '/.vimrc')
-    source $VIRTUAL_ENV/.vimrc
-end
+"if filereadable($VIRTUAL_ENV . '/.vimrc')
+    "source $VIRTUAL_ENV/.vimrc
+"end
 
-autocmd FileType python compiler pylint
-au FileType python set omnifunc=pythoncomplete#Complete
-au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+"autocmd FileType python compiler pylint
+"au FileType python set omnifunc=pythoncomplete#Complete
+"au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 
 " Don't let pyflakes use the quickfix window
-let g:pyflakes_use_quickfix = 0
+"let g:pyflakes_use_quickfix = 0
 
 " turn of hlsearch and update pyflakes on enter
-au BufRead,BufNewFile *.py nnoremap <buffer><CR> :nohlsearch\|:call PressedEnter()<cr>
-nnoremap <buffer><CR> :nohlsearch\|:call PressedEnter()<cr>
+"au BufRead,BufNewFile *.py nnoremap <buffer><CR> :nohlsearch\|:call PressedEnter()<cr>
+"nnoremap <buffer><CR> :nohlsearch\|:call PressedEnter()<cr>
 
 " clear the search buffer when hitting return and update pyflakes checks
-function! PressedEnter()
-    :nohlsearch
-    if &filetype == 'python'
-        :PyflakesUpdate
-    end
-endfunction
+"function! PressedEnter()
+    ":nohlsearch
+    "if &filetype == 'python'
+        ":PyflakesUpdate
+    "end
+"endfunction
 " Run pep8
 let g:pep8_map='<leader>8'
 
 " Trailing space removal on save
-function! StripTrailingSpaces()
-    let l = line(".")
-    let c = col(".")
-    silent! execute '%s/\s\+$//e'
-    call cursor(l, c)
-endfunction
-au BufWritePre *.py :call StripTrailingSpaces()
+"function! StripTrailingSpaces()
+    "let l = line(".")
+    "let c = col(".")
+    "silent! execute '%s/\s\+$//e'
+    "call cursor(l, c)
+"endfunction
+"au BufWritePre *.py :call StripTrailingSpaces()
 
 
 " Omni Completion *************************************************************
-let g:SuperTabDefaultCompletionType = "context"
+"let g:SuperTabDefaultCompletionType = "context"
 "set  completeopt+=longest
 " close scratch preview automatically
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif 
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
-autocmd FileType html :set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType python set omnifunc=pythoncomplete#Complete
+"autocmd FileType html :set omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 "autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType c set omnifunc=ccomplete#Complete
+"autocmd FileType c set omnifunc=ccomplete#Complete
 " May require ruby compiled in
 "autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete 
 
