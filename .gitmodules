@@ -1,9 +1,6 @@
 [submodule "bundle/fugitive"]
 	path = bundle/fugitive
 	url = http://github.com/tpope/vim-fugitive.git
-[submodule "bundle/pylint"]
-	path = bundle/pylint
-	url = https://github.com/vim-scripts/pylint.vim.git
 [submodule "bundle/ack"]
 	path = bundle/ack
 	url = https://github.com/mileszs/ack.vim.git
@@ -22,24 +19,15 @@
 [submodule "bundle/python.vim"]
 	path = bundle/python.vim
 	url = https://github.com/vim-scripts/python.vim.git
-[submodule "bundle/pyflakes-vim"]
-	path = bundle/pyflakes-vim
-	url = https://github.com/kevinw/pyflakes-vim.git
 [submodule "bundle/bufexplorer"]
 	path = bundle/bufexplorer
 	url = https://github.com/vim-scripts/bufexplorer.zip.git
-[submodule "bundle/sparkup"]
-	path = bundle/sparkup
-	url = https://github.com/kogakure/vim-sparkup.git
 [submodule "bundle/surround"]
 	path = bundle/surround
 	url = https://github.com/tpope/vim-surround.git
 [submodule "bundle/command-t"]
 	path = bundle/command-t
 	url = git://git.wincent.com/command-t.git
-[submodule "bundle/rope-omni"]
-	path = bundle/rope-omni
-	url = https://github.com/rygwdn/rope-omni.git
 [submodule "bundle/pytest.vim"]
 	path = bundle/pytest.vim
 	url = https://github.com/alfredodeza/pytest.vim.git
@@ -49,6 +37,6 @@
 [submodule "bundle/pep8"]
 	path = bundle/pep8
 	url = https://github.com/vim-scripts/pep8.git
-[submodule "bundle/ropevim"]
-	path = bundle/ropevim
-	url = https://github.com/sontek/rope-vim.git
+[submodule "bundle/unimpaired"]
+	path = bundle/unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
