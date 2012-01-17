@@ -14,3 +14,11 @@ Command-T
 cd ~/.vim/bundle/command-t/ruby/command-t
 ruby extconf.rb
 make
+
+
+Helpful Links and Tips
+======================
+
+Use :messages to see startup errors or use verbose for more detailed logs
+
+http://vim.wikia.com/wiki/Displaying_the_current_Vim_environment
