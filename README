@@ -1,0 +1,16 @@
+Manual steps
+============
+
+PyFlakes
+--------
+
+cd ~/.vim/bundle/pyflakes-vim
+git submodule init
+git submodule update
+
+Command-T
+---------
+
+cd ~/.vim/bundle/command-t/ruby/command-t
+ruby extconf.rb
+make
