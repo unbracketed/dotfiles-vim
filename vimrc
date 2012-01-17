@@ -14,6 +14,16 @@ Bundle 'gmarik/vundle'
 
 " original repos on github
 Bundle 'tpope/vim-fugitive'
+Bundle 'mileszs/ack.vim'
+Bundle 'vim-scripts/ZoomWin'
+Bundle 'vim-scripts/bufexplorer.zip'
+Bundle 'vim-scripts/pep8'
+Bundle 'kevinw/pyflakes-vim'
+
+"non github
+Bundle 'git://git.wincent.com/command-t.git'
+
+
 
 filetype plugin indent on
 
@@ -123,6 +133,9 @@ syntax on
 " Python stuff
 " ****************************************************************
 "
+"
+
+
 autocmd BufRead,BufNewFile *.py syntax on
 
 " Run pep8 shortcut
@@ -180,6 +193,9 @@ nmap <leader>gd :Gdiff<cr>
 
 "Ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+"shortcut. Don't open first result
+nmap <leader>a <Esc>:Ack!
+
 
 "-----------------------------------------------------------------------------  
 "                                Startup
