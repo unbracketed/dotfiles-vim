@@ -1,8 +1,20 @@
 " This must be first, because it changes other options as side effect
 set nocompatible
-
 filetype off
-call pathogen#runtime_append_all_bundles()
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+
+" Plugins managed by Vundle
+"
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" original repos on github
+Bundle 'tpope/vim-fugitive'
+
 filetype plugin indent on
 
 " change the mapleader from \ to ,
@@ -22,7 +34,8 @@ set backspace=indent,eol,start
 "if match($TERMCAP, 'Co#256:') == 0 || match($TERMCAP, ':Co#256:') > 0           
      set t_Co=256                                                                
 "endif
-colorscheme lucius
+
+"colorscheme lucius
 
 set wildmenu                  " Menu completion in command mode on <Tab>
 set wildmode=full             " <Tab> cycles between all matching choices.
@@ -66,7 +79,10 @@ set cursorline              " have a line indicate the cursor location
 set ruler                   " show the cursor position all the time
 set shiftround              " rounds indent to a multiple of shiftwidth
 set laststatus=2            " Always show statusline, even if only 1 window.
-set statusline=%<%f\ (%{&ft})%=%-19(%3l,%02c%03V%)%{fugitive#statusline()}
+
+
+"set statusline=%<%f\ (%{&ft})%=%-19(%3l,%02c%03V%)%{fugitive#statusline()}
+
 
 set foldmethod=indent       " allow us to fold on indents
 set foldlevel=99            " don't fold by default
@@ -108,67 +124,28 @@ syntax on
 " ****************************************************************
 "
 autocmd BufRead,BufNewFile *.py syntax on
-"autocmd BufRead,BufNewFile *.py set ai
-"autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,with,try,except,finally,def,class
 
-" activate virtualenv in vim python
-"if($VIRTUAL_ENV)
-    ":python activate_this = '$VIRTUAL_ENV/bin/activate_this.py'
-    ":python execfile(activate_this, dict(__file__=activate_this))
-"endif
-
-"load any vim customizations for the virtualenv
-"if filereadable($VIRTUAL_ENV . '/.vimrc')
-    "source $VIRTUAL_ENV/.vimrc
-"end
-
-"autocmd FileType python compiler pylint
-"au FileType python set omnifunc=pythoncomplete#Complete
-"au BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
-
-" Don't let pyflakes use the quickfix window
-"let g:pyflakes_use_quickfix = 0
-
-" turn of hlsearch and update pyflakes on enter
-"au BufRead,BufNewFile *.py nnoremap <buffer><CR> :nohlsearch\|:call PressedEnter()<cr>
-"nnoremap <buffer><CR> :nohlsearch\|:call PressedEnter()<cr>
-
-" clear the search buffer when hitting return and update pyflakes checks
-"function! PressedEnter()
-    ":nohlsearch
-    "if &filetype == 'python'
-        ":PyflakesUpdate
-    "end
-"endfunction
-" Run pep8
+" Run pep8 shortcut
 let g:pep8_map='<leader>8'
 
 " Trailing space removal on save
-"function! StripTrailingSpaces()
-    "let l = line(".")
-    "let c = col(".")
-    "silent! execute '%s/\s\+$//e'
-    "call cursor(l, c)
-"endfunction
-"au BufWritePre *.py :call StripTrailingSpaces()
+function! StripTrailingSpaces()
+    let l = line(".")
+    let c = col(".")
+    silent! execute '%s/\s\+$//e'
+    call cursor(l, c)
+endfunction
+au BufWritePre *.py :call StripTrailingSpaces()
 
 
-" Omni Completion *************************************************************
-"let g:SuperTabDefaultCompletionType = "context"
-"set  completeopt+=longest
+
 " close scratch preview automatically
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif 
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
-"autocmd FileType html :set omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-"autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-"autocmd FileType c set omnifunc=ccomplete#Complete
-" May require ruby compiled in
-"autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete 
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
@@ -178,18 +155,19 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 "
 "  " NERDTree
 "  ********************************************************************
-:noremap <Leader>n :NERDTreeToggle<CR>
+":noremap <Leader>n :NERDTreeToggle<CR>
 
 " NERD Commenter **************************************************************
-let NERDCreateDefaultMappings=0 " I turn this off to make it simple
+"let NERDCreateDefaultMappings=0 " I turn this off to make it simple
 
 " Toggle Tags List
-nmap <leader>m :Tlist<CR>
+"nmap <leader>m :Tlist<CR>
 
 " Toggle commenting on 1 line or all selected lines. Wether to comment or not
 " is decided based on the first line; if it's not commented then all lines
 " will be commented
-:map <Leader>c :call NERDComment(0, "toggle")<CR> 
+":map <Leader>c :call NERDComment(0, "toggle")<CR> 
+
 
 " fugitive.vim
 " ------------------------------
@@ -206,17 +184,13 @@ let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 "-----------------------------------------------------------------------------  
 "                                Startup
 "
-"
 "----------------------------------------------------------------------------  
 " Open NERDTree on start
 "autocmd VimEnter * exe 'NERDTree' | wincmd l 
 
 
-
-
 "----------------------------------------------------------------------------  
 "                                Host specific
-"
 "
 "----------------------------------------------------------------------------  
 if filereadable(expand("~/.vimrc.local"))
