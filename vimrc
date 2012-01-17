@@ -19,6 +19,7 @@ Bundle 'vim-scripts/ZoomWin'
 Bundle 'vim-scripts/bufexplorer.zip'
 Bundle 'vim-scripts/pep8'
 Bundle 'kevinw/pyflakes-vim'
+Bundle 'scrooloose/nerdcommenter'
 
 "non github
 Bundle 'git://git.wincent.com/command-t.git'
@@ -45,7 +46,7 @@ set backspace=indent,eol,start
      set t_Co=256                                                                
 "endif
 
-colorscheme lucius
+colorscheme my-lucius
 
 set wildmenu                  " Menu completion in command mode on <Tab>
 set wildmode=full             " <Tab> cycles between all matching choices.
@@ -179,7 +180,7 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 " Toggle commenting on 1 line or all selected lines. Wether to comment or not
 " is decided based on the first line; if it's not commented then all lines
 " will be commented
-":map <Leader>c :call NERDComment(0, "toggle")<CR> 
+:map <Leader>c :call NERDComment(0, "toggle")<CR> 
 
 
 " fugitive.vim
