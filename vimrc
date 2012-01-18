@@ -46,7 +46,7 @@ set backspace=indent,eol,start
      set t_Co=256                                                                
 "endif
 
-set colorcolumn=80
+"set colorcolumn=80
 colorscheme my-lucius
 
 
@@ -133,13 +133,19 @@ set nolist
 " Switch on syntax highlighting.
 syntax on
 
+" Disable the colorcolumn when switching modes.  Make sure this is the
+" first autocmd for the filetype here
+" This colorcolumn handling isn't working perfectly. For example
+" the command-t window will use the column if opened from within a 
+" Python buffer
+autocmd FileType * setlocal colorcolumn=0
+
 " Python stuff
 " ****************************************************************
 "
 "
 
-
-autocmd BufRead,BufNewFile *.py syntax on
+autocmd FileType python setlocal colorcolumn=79
 
 " Run pep8 shortcut
 let g:pep8_map='<leader>8'
