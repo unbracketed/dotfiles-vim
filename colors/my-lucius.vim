@@ -346,3 +346,7 @@ hi Visual           ctermfg=NONE            ctermbg=24
 " visual mode selection when vim is not owning the selection (x11 only)
 hi VisualNOS        guifg=fg                                        gui=underline
 hi VisualNOS        ctermfg=fg                                      cterm=underline
+
+
+hi ColorColumn           guifg=#818698           guibg=#363946
+hi ColorColumn           ctermfg=102             ctermbg=237
