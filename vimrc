@@ -20,6 +20,8 @@ Bundle 'vim-scripts/bufexplorer.zip'
 Bundle 'vim-scripts/pep8'
 Bundle 'kevinw/pyflakes-vim'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'Lokaltog/vim-powerline'
+
 
 "non github
 Bundle 'git://git.wincent.com/command-t.git'
@@ -92,6 +94,9 @@ set cursorline              " have a line indicate the cursor location
 set ruler                   " show the cursor position all the time
 set shiftround              " rounds indent to a multiple of shiftwidth
 set laststatus=2            " Always show statusline, even if only 1 window.
+
+"For PowerLine glyphs
+set encoding=utf-8
 
 
 "set statusline=%<%f\ (%{&ft})%=%-19(%3l,%02c%03V%)%{fugitive#statusline()}
