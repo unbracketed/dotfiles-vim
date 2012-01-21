@@ -196,14 +196,6 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 :map <Leader>c :call NERDComment(0, "toggle")<CR> 
 
 
-" fugitive.vim
-" ------------------------------
-"rebind my favorite aliases for Fugitive
-nmap <leader>gs :Gstatus<cr>
-nmap <leader>gc :Gcommit<cr>
-nmap <leader>ga :Gwrite<cr>
-nmap <leader>gl :Glog<cr>
-nmap <leader>gd :Gdiff<cr>
 
 "Ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
