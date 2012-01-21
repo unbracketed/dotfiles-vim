@@ -177,36 +177,3 @@ autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
-
-" -----------------------------------------------------------------------------  
-"
-"  " NERDTree
-"  ********************************************************************
-":noremap <Leader>n :NERDTreeToggle<CR>
-
-" NERD Commenter **************************************************************
-"let NERDCreateDefaultMappings=0 " I turn this off to make it simple
-
-" Toggle Tags List
-"nmap <leader>m :Tlist<CR>
-
-
-
-
-
-
-"-----------------------------------------------------------------------------  
-"                                Startup
-"
-"----------------------------------------------------------------------------  
-" Open NERDTree on start
-"autocmd VimEnter * exe 'NERDTree' | wincmd l 
-
-
-"----------------------------------------------------------------------------  
-"                                Host specific
-"
-"----------------------------------------------------------------------------  
-if filereadable(expand("~/.vimrc.local"))
-  source ~/.vimrc.local
-endif
