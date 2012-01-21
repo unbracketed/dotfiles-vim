@@ -22,17 +22,15 @@ Bundle 'kevinw/pyflakes-vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'Lokaltog/vim-powerline'
 
-
 "non github
 Bundle 'git://git.wincent.com/command-t.git'
-
-
 
 filetype plugin indent on
 
 " change the mapleader from \ to ,
 let mapleader=","
-imap jj <Esc> " Professor VIM says '87% of users prefer jj over esc', jj abrams disagrees
+"remap Escape key 
+imap jj <Esc>
 
 set hidden        " hide buffers instead of closing them
 set nowrap        " don't wrap lines
@@ -95,15 +93,9 @@ set ruler                   " show the cursor position all the time
 set shiftround              " rounds indent to a multiple of shiftwidth
 set laststatus=2            " Always show statusline, even if only 1 window.
 
-"For PowerLine glyphs
-set encoding=utf-8
-
-
-"set statusline=%<%f\ (%{&ft})%=%-19(%3l,%02c%03V%)%{fugitive#statusline()}
-
-
 set foldmethod=indent       " allow us to fold on indents
 set foldlevel=99            " don't fold by default
+
 " Vertical and horizontal split then hop to a new buffer
 :noremap <Leader>v :vsp^M^W^W<cr>
 :noremap <Leader>h :split^M^W^W<cr>
@@ -119,16 +111,9 @@ map <C-H> <C-W>h
 map <C-L> <C-W>l
 map <C-K> <C-W>k
 
-"Insert New Line *************************************************************
-map <S-Enter> O<ESC> " awesome, inserts new line without going into insert mode
+"insert newline without going into Insert mode
+map <S-Enter> O<ESC>
 map <Enter> o<ESC>
-"set fo-=r " do not insert a comment leader after an enter, (no work, fix!!)
-
-
-" Sessions ********************************************************************
-" Sets what is saved when you save a session
-set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
-
 
 " Invisible characters *********************************************************
 set listchars=trail:.,tab:>-,eol:$
@@ -165,14 +150,9 @@ endfunction
 au BufWritePre *.py :call StripTrailingSpaces()
 
 
-
 " close scratch preview automatically
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif 
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
