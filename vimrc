@@ -36,19 +36,15 @@ set hidden        " hide buffers instead of closing them
 set nowrap        " don't wrap lines
 set tabstop=4     " a tab is four spaces
 set expandtab     " convert tab to white space
+
+" allow backspacing over everything in insert mode
 set backspace=indent,eol,start
-                  " allow backspacing over everything in insert mode
-" Work-around incomplete terminfo databases                                     
-" " Particulalry useful when under `screen`, which may or may not be attached
-" to  
-" " a physical terminal capable of 256color mode.                                 
-"if match($TERMCAP, 'Co#256:') == 0 || match($TERMCAP, ':Co#256:') > 0           
-     set t_Co=256                                                                
-"endif
 
-"set colorcolumn=80
+"as a member of the Entitled Generation, I expect 256 colors or I go home 
+"and pout
+set t_Co=256                                                                
+
 colorscheme my-lucius
-
 
 set wildmenu                  " Menu completion in command mode on <Tab>
 set wildmode=full             " <Tab> cycles between all matching choices.
@@ -56,7 +52,6 @@ set wildmode=full             " <Tab> cycles between all matching choices.
 """ Insert completion
 " don't select first item, follow typing in autocomplete
 set completeopt=menuone,longest,preview
-set pumheight=6             " Keep a small completion window
 
 "don't like dealing with swp files
 set nobackup
@@ -151,8 +146,8 @@ au BufWritePre *.py :call StripTrailingSpaces()
 
 
 " close scratch preview automatically
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif 
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+"autocmd CursorMovedI * if pumvisible() == 0|pclose|endif 
+"autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
