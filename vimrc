@@ -33,6 +33,7 @@ let mapleader=","
 "remap Escape key 
 imap jj <Esc>
 
+set autoread      " Reload files changed outside vim
 set hidden        " hide buffers instead of closing them
 set nowrap        " don't wrap lines
 set tabstop=4     " a tab is four spaces
