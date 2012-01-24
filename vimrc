@@ -21,6 +21,7 @@ Bundle 'vim-scripts/pep8'
 Bundle 'kevinw/pyflakes-vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 
 "non github
