@@ -23,35 +23,29 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
-
 "non github
 Bundle 'git://git.wincent.com/command-t.git'
-
-
 
 filetype plugin indent on
 
 " change the mapleader from \ to ,
 let mapleader=","
-imap jj <Esc> " Professor VIM says '87% of users prefer jj over esc', jj abrams disagrees
+"remap Escape key 
+imap jj <Esc>
 
 set hidden        " hide buffers instead of closing them
 set nowrap        " don't wrap lines
 set tabstop=4     " a tab is four spaces
 set expandtab     " convert tab to white space
+
+" allow backspacing over everything in insert mode
 set backspace=indent,eol,start
-                  " allow backspacing over everything in insert mode
-" Work-around incomplete terminfo databases                                     
-" " Particulalry useful when under `screen`, which may or may not be attached
-" to  
-" " a physical terminal capable of 256color mode.                                 
-"if match($TERMCAP, 'Co#256:') == 0 || match($TERMCAP, ':Co#256:') > 0           
-     set t_Co=256                                                                
-"endif
 
-"set colorcolumn=80
+"as a member of the Entitled Generation, I expect 256 colors or I go home 
+"and pout
+set t_Co=256                                                                
+
 colorscheme my-lucius
-
 
 set wildmenu                  " Menu completion in command mode on <Tab>
 set wildmode=full             " <Tab> cycles between all matching choices.
@@ -59,7 +53,6 @@ set wildmode=full             " <Tab> cycles between all matching choices.
 """ Insert completion
 " don't select first item, follow typing in autocomplete
 set completeopt=menuone,longest,preview
-set pumheight=6             " Keep a small completion window
 
 "don't like dealing with swp files
 set nobackup
@@ -96,15 +89,9 @@ set ruler                   " show the cursor position all the time
 set shiftround              " rounds indent to a multiple of shiftwidth
 set laststatus=2            " Always show statusline, even if only 1 window.
 
-"For PowerLine glyphs
-set encoding=utf-8
-
-
-"set statusline=%<%f\ (%{&ft})%=%-19(%3l,%02c%03V%)%{fugitive#statusline()}
-
-
 set foldmethod=indent       " allow us to fold on indents
 set foldlevel=99            " don't fold by default
+
 " Vertical and horizontal split then hop to a new buffer
 :noremap <Leader>v :vsp^M^W^W<cr>
 :noremap <Leader>h :split^M^W^W<cr>
@@ -120,16 +107,9 @@ map <C-H> <C-W>h
 map <C-L> <C-W>l
 map <C-K> <C-W>k
 
-"Insert New Line *************************************************************
-map <S-Enter> O<ESC> " awesome, inserts new line without going into insert mode
+"insert newline without going into Insert mode
+map <S-Enter> O<ESC>
 map <Enter> o<ESC>
-"set fo-=r " do not insert a comment leader after an enter, (no work, fix!!)
-
-
-" Sessions ********************************************************************
-" Sets what is saved when you save a session
-set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
-
 
 " Invisible characters *********************************************************
 set listchars=trail:.,tab:>-,eol:$
@@ -166,64 +146,10 @@ endfunction
 au BufWritePre *.py :call StripTrailingSpaces()
 
 
-
 " close scratch preview automatically
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif 
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+"autocmd CursorMovedI * if pumvisible() == 0|pclose|endif 
+"autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
-
-" -----------------------------------------------------------------------------  
-"
-"  " NERDTree
-"  ********************************************************************
-":noremap <Leader>n :NERDTreeToggle<CR>
-
-" NERD Commenter **************************************************************
-"let NERDCreateDefaultMappings=0 " I turn this off to make it simple
-
-" Toggle Tags List
-"nmap <leader>m :Tlist<CR>
-
-" Toggle commenting on 1 line or all selected lines. Wether to comment or not
-" is decided based on the first line; if it's not commented then all lines
-" will be commented
-:map <Leader>c :call NERDComment(0, "toggle")<CR> 
-
-
-" fugitive.vim
-" ------------------------------
-"rebind my favorite aliases for Fugitive
-nmap <leader>gs :Gstatus<cr>
-nmap <leader>gc :Gcommit<cr>
-nmap <leader>ga :Gwrite<cr>
-nmap <leader>gl :Glog<cr>
-nmap <leader>gd :Gdiff<cr>
-
-"Ack
-let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-"shortcut. Don't open first result
-nmap <leader>a <Esc>:Ack!
-
-
-"-----------------------------------------------------------------------------  
-"                                Startup
-"
-"----------------------------------------------------------------------------  
-" Open NERDTree on start
-"autocmd VimEnter * exe 'NERDTree' | wincmd l 
-
-
-"----------------------------------------------------------------------------  
-"                                Host specific
-"
-"----------------------------------------------------------------------------  
-if filereadable(expand("~/.vimrc.local"))
-  source ~/.vimrc.local
-endif
