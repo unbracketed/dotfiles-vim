@@ -146,6 +146,10 @@ function! StripTrailingSpaces()
 endfunction
 au BufWritePre *.py :call StripTrailingSpaces()
 
+"****
+
+"override command-t buffer so bufexplorer commands work w/o pause
+nmap  <leader>tb   :CommandTBuffer<CR>
 
 " close scratch preview automatically
 "autocmd CursorMovedI * if pumvisible() == 0|pclose|endif 
