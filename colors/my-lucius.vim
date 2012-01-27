@@ -349,4 +349,4 @@ hi VisualNOS        ctermfg=fg                                      cterm=underl
 
 
 hi ColorColumn           guifg=#818698           guibg=#363946
-hi ColorColumn           ctermfg=102             ctermbg=237
+hi ColorColumn           ctermfg=102             ctermbg=235
